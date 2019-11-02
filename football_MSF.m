@@ -1,12 +1,13 @@
 clear all;
 clc;
 global global_info;
-global_info.STOP_AT = 2000;
-golbal_info.OrderType={'Urgent','Normal','Standard'};
+global_info.STOP_AT = 200;
+global_info.OrderType = {'Urgent','Normal','Standard'};
+
 pns = pnstruct('football_pn_pdf');
 dynamic.m0 = {'pProduction',30};
-dynamic.ft = {'tMatterialCutting',8,'allothers',8};
-dynamic.re = {'rMatterialCutting',10,8,...
+dynamic.ft = {'tMaterialCutting',8,'allothers',8};
+dynamic.re = {'rMaterialCutting',10,8,...
     'rLamination',20,8,...
     'rPanelCutting',50,8,...
     'rPritting',200,8,...
@@ -33,4 +34,4 @@ plotp(sim, {
     'pPacked'
     });
 prnss(sim);
-prnfinalcolors(sim);
+ prnfinalcolors(sim);
