@@ -1,11 +1,11 @@
 clear all;
 clc;
 global global_info;
-global_info.STOP_AT = 200;
+global_info.STOP_AT = 400;
 global_info.OrderType = {'Urgent','Normal','Standard'};
 
 pns = pnstruct('football_pn_pdf');
-dynamic.m0 = {'pProduction',30};
+dynamic.m0 = {'pProduction',1};
 dynamic.ft = {'tMaterialCutting',8,'allothers',8};
 dynamic.re = {'rMaterialCutting',10,8,...
     'rLamination',20,8,...
@@ -33,5 +33,7 @@ plotp(sim, {
     'pPacking',...
     'pPacked'
     });
+prnschedule(sim);
+plotGC(sim);
 prnss(sim);
- prnfinalcolors(sim);
+prnfinalcolors(sim);
