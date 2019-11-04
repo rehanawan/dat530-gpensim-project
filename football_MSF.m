@@ -9,8 +9,8 @@ dynamic.m0 = {'pProduction',2};
 dynamic.ft = {
     'allothers',5};
 %firing costs.
-dyn.fc_fixed = {'tQualityTester',50, 'tTransferAQ',100};
-dyn.fc_variable = {'tQualityTester',20, 'tTransferAQ',25};
+dynamic.fc_fixed = {'tQualityTester',50, 'tTransferAQ',100};
+dynamic.fc_variable = {'tQualityTester',20, 'tTransferAQ',25};
 %number of human resources in eacch department
 dynamic.re = {
     'rMaterialCutting',30,480,...

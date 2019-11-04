@@ -18,7 +18,7 @@ switch transition.name
             color = 'BQuality';
         end
         transition.new_color = color;
-        transition.override = 1;
+%         transition.override = 1;
         granted = requestSR({'rQualityAsurance',4});
             if (granted)
                 if and(ge(random_num,0), lt(random_num,0.95))
@@ -27,7 +27,7 @@ switch transition.name
                     color = 'BQuality';
                 end
                 transition.new_color = color;
-                transition.override = 1;
+%                 transition.override = 1;
                 fire = granted;
             else
                 fire = 0;
