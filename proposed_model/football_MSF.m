@@ -1,7 +1,7 @@
 clear all;
 clc;
 global global_info;
-global_info.STOP_AT = 600;
+global_info.STOP_AT = 800;
 global_info.Quality = {'AQuality','BQuality'};
 
 pns = pnstruct('football_pn_pdf');
