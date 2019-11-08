@@ -4,24 +4,11 @@ switch transition.name
     case 'tQualityAsurance' % tQualityTester adds colors "AQuality" and
         %"BQuality" to tokens
         %put here condition to assign randomly a colour to the tokens (see
-        %pages until page 26
-        % randomize array [1, 2, 3,4,5] using GPenSIM's function 'randomgen'
-        %random_errorperct = randomgen(1:5); %generate percentage of error 
-        %in products from 0% to 5%
-        %selected__errorperct = random_errorperct(1); %choose percentage of
-        %error in products from 0% to 5%
-        % 'AQuality' has 90% chance, whereas 'BQuality' has only 10%
+        % 'AQuality' has 98% chance, whereas 'BQuality' has only 10%
         random_num = rand; % 0 to 1
-        if and(ge(random_num,0), lt(random_num,0.98))
-            color = 'AQuality'; 
-        else
-            color = 'BQuality';
-        end
-        transition.new_color = color;
-%         transition.override = 1;
-        granted = requestSR({'rQualityAsurance',4});
+        granted = requestSR({'rQualityAsurance',1});
             if (granted)
-                if and(ge(random_num,0), lt(random_num,0.95))
+                if and(ge(random_num,0), lt(random_num,0.98))
                     color = 'AQuality'; 
                 else
                     color = 'BQuality';
@@ -45,7 +32,7 @@ switch transition.name
         %with color 'AQuality'
         tokID2 = tokenAnyColor('pQualityTested',1,{'AQuality'});
         % select token with color 'AQuality'
-        fire = tokID2; % fire only if the token has color 't2'
+        fire = tokID2; % fire only if the token has color 'Aquality'
 
     case 'tLamination'
         granted = requestSR({'rLaminationHuman',3,'rLaminationMachine',1});
@@ -62,21 +49,21 @@ switch transition.name
                 fire = 0;
             end
     case 'tSorttingMatching'
-        granted = requestSR({'rSorttingMatching',4});
+        granted = requestSR({'rSorttingMatching',1});
             if (granted)
                 fire = granted;
             else
                 fire = 0;
             end
     case 'tBladerWeight'
-        granted = requestSR({'rBladerWeight',4});
+        granted = requestSR({'rBladerWeight',1});
             if (granted)
                 fire = granted;
             else
                 fire = 0;
             end
     case 'tStiching'
-        granted = requestSR({'rStiching',4});
+        granted = requestSR({'rStiching',2});
             if (granted)
                 fire = granted;
             else
@@ -90,31 +77,13 @@ switch transition.name
                 fire = 0;
             end
     case 'tPacking'
-        granted = requestSR({'rPacking',4});
+        granted = requestSR({'rPacking',2});
             if (granted)
                 fire = granted;
             else
                 fire = 0;
             end
-        
-            
-%     case 'tStiching' % 'tStiching' selects AQuality tokens only from pStiching 
-%         tokID6 = tokenAnyColor ('pStiching', 1, {'AQuality'});
-%         transition.selected_tokens = tokID6; % tokens to be removed
-%         fire = tokID6; % fire ONLY if P1 found
-%     case 'tQualityAsurance' % 'tQualityAsurance' selects AQuality tokens only from pQualityAsurance 
-%         tokID7 = tokenAnyColor ('pStiching', 1, {'AQuality'});
-%         transition.selected_tokens = tokID7; % tokens to be removed
-%         fire = tokID7; % fire ONLY if P1 found
-%     case 'tWashing' % 'tWashing' selects AQuality tokens only from pWashing 
-%         tokID8 = tokenAnyColor ('pWashing', 1, {'AQuality'});
-%         transition.selected_tokens = tokID8; % tokens to be removed
-%         fire = tokID8; % fire ONLY if P1 found
-%     case 'tPacking' % 'tPacking' selects AQuality tokens only from pPacking 
-%         tokID9 = tokenAnyColor ('pPacking', 1, {'AQuality'});
-%         transition.selected_tokens = tokID9; % tokens to be removed
-%         fire = tokID9; % fire ONLY if P1 found
-%         
+           
     otherwise 
         % just fire
 %         disp(transition.name)

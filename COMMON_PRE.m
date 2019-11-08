@@ -2,23 +2,10 @@ function [fire, transition] = COMMON_PRE(transition)
 
 switch transition.name
     case 'tQualityAsurance' % tQualityTester adds colors "AQuality" and
-        %"BQuality" to tokens
-        %put here condition to assign randomly a colour to the tokens (see
-        %pages until page 26
-        % randomize array [1, 2, 3,4,5] using GPenSIM's function 'randomgen'
-        %random_errorperct = randomgen(1:5); %generate percentage of error 
-        %in products from 0% to 5%
-        %selected__errorperct = random_errorperct(1); %choose percentage of
-        %error in products from 0% to 5%
-        % 'AQuality' has 90% chance, whereas 'BQuality' has only 10%
+        %"BQuality" 
+
+        % 'AQuality' has 95% chance, whereas 'BQuality' has only 5%
         random_num = rand; % 0 to 1
-        if and(ge(random_num,0), lt(random_num,0.95))
-            color = 'AQuality'; 
-        else
-            color = 'BQuality';
-        end
-        transition.new_color = color;
-%         transition.override = 1;
         granted = requestSR({'rQualityAsurance',1});
             if (granted)
                 if and(ge(random_num,0), lt(random_num,0.95))
@@ -45,7 +32,7 @@ switch transition.name
         %with color 'AQuality'
         tokID2 = tokenAnyColor('pQualityTested',1,{'AQuality'});
         % select token with color 'AQuality'
-        fire = tokID2; % fire only if the token has color 't2'
+        fire = tokID2; % fire only if the token has color 'AQuality'
 
     case 'tMaterialCutting'
           granted = requestSR({'rMaterialCutting',4});

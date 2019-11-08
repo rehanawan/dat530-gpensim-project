@@ -1,7 +1,7 @@
 clear all;
 clc;
 global global_info;
-% Simulation time considered as one working day
+% Simulation time considered as one slice of a working day
 global_info.STOP_AT = 100;
 
 % Quality colors used in simulations, to differentiate Quality of Ball
@@ -9,7 +9,7 @@ global_info.Quality = {'AQuality','BQuality'};
 
 pns = pnstruct('football_pn_pdf');
 dynamic.m0 = {'pProduction',20};
-% Firing time of each transition, normalised based on the actual time data
+% Firing time of each transition, truncated based on the actual time data
 % provided by the company.
 dynamic.ft = {
     'tTransferMaterialCutting',0.1,...
@@ -21,7 +21,7 @@ dynamic.ft = {
 % firing costs of each transition based on the cost data provided 
 % by the company.
 dynamic.fc_fixed = {
-    'tMaterialCutting',187,...
+    'tMaterialCutting',140,...
     'tLamination',729,...
     'tPanelCutting',438,...
     'tPrinting',1458,...
@@ -47,7 +47,7 @@ dynamic.fc_variable = {'tMaterialCutting',2,...
 % day so as along as the simulation is running it should be able to utilize
 % employees
 dynamic.re = {
-    'rMaterialCutting',32,16,...
+    'rMaterialCutting',24,16,...
     'rLamination',125,4,...
     'rPanelCutting',75,8,...
     'rPrinting',250,4,...
@@ -86,3 +86,4 @@ plotp(sim, {
 prnfinalcolors(sim,{'pPacked'
     });
 prnschedule(sim);
+% cotree(pni,1,1);
